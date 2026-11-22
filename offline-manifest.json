@@ -1,5 +1,5 @@
 {
-  "version": "0.6.1-20261122102139556",
+  "version": "0.6.1-20261122103233619",
   "literacyAudioComplete": true,
   "pinyinAudioComplete": true,
   "units": [
@@ -345,16 +345,6 @@
     }
   ],
   "assets": [
-    {
-      "url": "./.nojekyll",
-      "bytes": 0,
-      "group": "course"
-    },
-    {
-      "url": "./README.md",
-      "bytes": 1142,
-      "group": "course"
-    },
     {
       "url": "./art.js",
       "bytes": 7028,
