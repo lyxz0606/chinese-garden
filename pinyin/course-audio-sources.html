@@ -1,0 +1,18 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>拼音声音来源</title><link rel="stylesheet" href="course.css"></head><body><main class="shell"><a href="course.html">← 返回拼音游戏</a>
+<section class="panel"><h1>拼音声音来源与用途</h1>
+<p>基础认读、四声及部分完整音节使用朗读者 Chen Wang 的原始录音，来自 <a href="https://github.com/hugolpz/audio-cmn/blob/master/README.md">Audio-cmn 64k 音节集</a>。原项目声明采用 CC BY-SA 许可，未注明具体版本。项目整理：Hugo Lopez（PLIDAM, INALCO）；录音软件及技术支持：Nicolas Vion。</p>
+<p>声母卡片使用呼读音，例如 b、p、m 对应 bō、pō、mō，帮助认识字母。连续拼读需要轻短的声母与韵母相连；拼读练习用卡片合拢帮助尝试连读，完整音节录音用于核对；连续动作由家长带读。</p>
+<p>i、u、ü 分别使用 yi、wu、yu 的完整音节；ui、iu、un 对应 wei、you、wen 的独立发音写法。整体认读音节直接认读。轻声放在完整词句中示范，听辨与拼读游戏不使用从词句中截取的孤立轻声。</p>
+<p>词句和阅读主要使用已确认的微软晓晓音色；“出发”等少量内容使用已确认的晓伊或原文补录。新音频保留完整话语并增加首尾留白；纠音输入仅限家长明确批准的文字，课程始终显示正确原文。</p>
+<p>词句经过文件解码和两套本地转写筛查。同音字、轻声与连读变调单独核对。转写相符与参考来源支持本地试用，不代表专业逐条发音认证。</p>
+<p>当前基础认读与词句仍有不同音色。“信里请它带上皮球……”的分句使用微软云健男声。ong 使用安达卢西亚教育资源中的独立韵母教学片段完整音轨；bīn 与对照 bīng 使用 chinese-lessons.com 经阿姆斯特丹大学教学项目分发的完整原文件，按原许可保留原速。录音均保存本地；可在<a href="practice.html">拼读练习</a>查看本轮重点项目。</p>
+<p>58个两拼、三拼目标另提供完整音节的慢听，播放时保持音高；录音本身未拆分或拼接。慢听与声母轻短接韵母的专门教学示范分开统计。</p></section>
+<section class="panel"><h2>本轮新增参考原声</h2><div id="references"><p>正在读取来源……</p></div><p><a href="course-audio-sources.json">完整来源清单</a></p></section>
+</main><script>
+(async function(){const el=document.getElementById('references');try{
+const data=await(await fetch('course-audio-sources.json',{cache:'no-store'})).json(),rows=data.additionalReferences.filter(r=>r.sourceId.indexOf('stage5-reference-')===0||r.sourceId.indexOf('stage4-reference-')===0&&r.token!=='bin1');
+el.textContent='';if(!rows.length)el.textContent='新增参考原声仍在整理，当前录音来源见完整清单。';
+for(const row of rows){const div=document.createElement('div');div.className='list-row';const p=document.createElement('p');p.textContent=(row.text||'')+' · '+(row.author||row.publisher||row.voice||'')+' · '+(row.license||'')+(row.unmodified?' · 完整原文件':row.wholeUtterancePreserved?' · 保留完整话语，转码并加留白':' · 按清单注明的教学片段截取');div.appendChild(p);
+for(const [title,url] of [['原始来源',row.sourceUrl],['许可说明',row.licenseSource]])if(url){const a=document.createElement('a');a.textContent=title;a.href=url;div.appendChild(a);}if(row.requiredAttribution){const note=document.createElement('small');note.textContent=row.requiredAttribution;div.appendChild(note);}el.appendChild(div);}
+}catch(error){el.textContent='来源清单暂时未能读取。';}})();
+</script></body></html>

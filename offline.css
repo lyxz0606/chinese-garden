@@ -1,0 +1,15 @@
+.offline-launch{display:block;margin:12px auto 24px;min-height:44px;color:#226b5b;background:#fffdf6;border:1px solid #c7d6ce;border-radius:18px;padding:10px 18px;font:inherit;cursor:pointer}
+.offline-panel{position:fixed;inset:0;z-index:1000;overflow:auto;background:rgba(26,50,44,.45);padding:24px 16px;padding-bottom:max(24px,env(safe-area-inset-bottom));overscroll-behavior:contain}
+.offline-panel[hidden]{display:none}
+.offline-card [hidden]{display:none!important}
+.offline-card{width:min(100%,720px);box-sizing:border-box;margin:0 auto;padding:24px;background:#f7f5ed;border-radius:24px;box-shadow:0 14px 60px #173c4433;color:#294c41;line-height:1.7}
+.offline-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.offline-head h2{font-size:24px;margin:0}
+.offline-card h3{margin:22px 0 8px;font-size:19px}.offline-card p{margin:10px 0}.offline-card .btn{min-height:44px;white-space:normal}
+.offline-card .offline-close{flex-shrink:0}.offline-actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.offline-state{background:#fff;border:1px solid #dbe5db;padding:14px 18px;border-radius:16px}.offline-state ul{padding-left:22px;margin:10px 0}
+.offline-state progress{width:100%;height:15px;accent-color:#226b5b}.offline-note{font-size:14px;color:#5b7167}.offline-alert{color:#8b471e}
+.offline-samples{display:grid;gap:8px}.offline-sample{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;padding:10px 14px;border-radius:12px}
+.offline-sample .btn{flex-shrink:0}.offline-sample small{display:block;color:#6c776a}.offline-install ol{padding-left:24px}
+body.offline-open{overflow:hidden}@media(max-width:500px){.offline-panel{padding:10px}.offline-card{padding:18px;border-radius:18px}.offline-head h2{font-size:21px}.offline-actions .btn{flex:1 1 150px}.offline-sample{align-items:flex-start}.offline-sample .btn{padding:10px 13px}}
+
+.offline-head{position:sticky;top:-24px;background:#f7f5ed;z-index:2;padding:10px 0}.voice-download{padding:8px 0;border-top:1px solid #d4dfd4;border-bottom:1px solid #d4dfd4}.voice-download select{min-width:0;max-width:72%;font:inherit;min-height:44px}@media(max-width:500px){.offline-head{top:-18px}.voice-download select{font-size:14px}}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><rect x="0" y="0" width="120" height="120" rx="20" fill="#fff7e9"/><g stroke="#463c31" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="60" cy="104" rx="43" ry="5" fill="#e5dac5" stroke="none"/>
+<path d="M16 82 Q12 77 18 71 Q14 65 23 61 Q21 54 31 51 Q28 45 39 41 Q37 35 47 33 Q47 26 59 28 Q62 20 72 24 Q79 17 86 23 Q95 20 98 29 Q106 33 100 42 Q104 49 94 54 Q96 62 85 65 Q86 74 75 75 Q73 83 61 82 Q55 91 44 88 Q35 97 28 93 Q17 96 16 82Z" fill="#8cb568" stroke="#496f42"/>
+<path d="M94 25 Q98 16 108 16" fill="none" stroke="#496f42" stroke-width="5"/>
+<path d="M24 83 Q39 64 54 53 Q69 42 86 32 M33 89 Q55 72 73 58 Q88 48 96 37" fill="none" stroke="#5b894b" stroke-width="4"/>
+<g fill="#accd82" stroke="#5b894b" stroke-width="1.7">
+<ellipse cx="28" cy="69" rx="5" ry="4"/><ellipse cx="39" cy="54" rx="5" ry="4"/><ellipse cx="51" cy="44" rx="5" ry="4"/><ellipse cx="65" cy="34" rx="5" ry="4"/><ellipse cx="78" cy="28" rx="5" ry="4"/>
+<ellipse cx="40" cy="77" rx="5" ry="4"/><ellipse cx="53" cy="66" rx="5" ry="4"/><ellipse cx="67" cy="56" rx="5" ry="4"/><ellipse cx="81" cy="47" rx="5" ry="4"/>
+<ellipse cx="54" cy="80" rx="5" ry="4"/><ellipse cx="69" cy="70" rx="5" ry="4"/><ellipse cx="83" cy="59" rx="5" ry="4"/>
+</g>
+</g></svg>

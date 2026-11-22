@@ -1,0 +1,238 @@
+{
+  "groups": [
+    {
+      "title": "之前反馈的字词",
+      "note": "先听熟悉的几组。",
+      "items": [
+        {
+          "text": "花",
+          "pinyin": "huā"
+        },
+        {
+          "text": "可",
+          "pinyin": "kě"
+        },
+        {
+          "text": "切",
+          "pinyin": "qiē"
+        },
+        {
+          "text": "就在",
+          "pinyin": "jiù zài"
+        },
+        {
+          "text": "就是",
+          "pinyin": "jiù shì"
+        },
+        {
+          "text": "提起",
+          "pinyin": "tí qǐ"
+        },
+        {
+          "text": "切开",
+          "pinyin": "qiē kāi"
+        },
+        {
+          "text": "可以",
+          "pinyin": "kě yǐ"
+        },
+        {
+          "text": "以后",
+          "pinyin": "yǐ hòu"
+        },
+        {
+          "text": "提醒",
+          "pinyin": "tí xǐng"
+        }
+      ]
+    },
+    {
+      "title": "这次补录的多音字",
+      "note": "“一行”指排成一排；“背上”指骆驼的背部。",
+      "items": [
+        {
+          "text": "猪圈",
+          "pinyin": "zhū juàn"
+        },
+        {
+          "text": "背上",
+          "pinyin": "bèi shang"
+        },
+        {
+          "text": "排成整齐的一行",
+          "pinyin": "行读 háng"
+        },
+        {
+          "text": "我把小车排成整齐的一行。",
+          "pinyin": "行读 háng"
+        }
+      ]
+    },
+    {
+      "title": "长",
+      "note": "长大和长短，用不同的读音。",
+      "items": [
+        {
+          "text": "长",
+          "pinyin": "zhǎng"
+        },
+        {
+          "text": "长大",
+          "pinyin": "zhǎng dà"
+        },
+        {
+          "text": "长长的",
+          "pinyin": "cháng cháng de"
+        }
+      ]
+    },
+    {
+      "title": "行",
+      "note": "行走和银行里的“行”读音不同。",
+      "items": [
+        {
+          "text": "行",
+          "pinyin": "xíng"
+        },
+        {
+          "text": "行走",
+          "pinyin": "xíng zǒu"
+        },
+        {
+          "text": "银行",
+          "pinyin": "yín háng"
+        }
+      ]
+    },
+    {
+      "title": "数",
+      "note": "“数数”里的两个“数”读音也不同。",
+      "items": [
+        {
+          "text": "数",
+          "pinyin": "shǔ"
+        },
+        {
+          "text": "数数",
+          "pinyin": "shǔ shù"
+        },
+        {
+          "text": "数字",
+          "pinyin": "shù zì"
+        }
+      ]
+    },
+    {
+      "title": "种",
+      "note": "种子与种树，分别听。",
+      "items": [
+        {
+          "text": "种",
+          "pinyin": "zhǒng"
+        },
+        {
+          "text": "种子",
+          "pinyin": "zhǒng zi"
+        },
+        {
+          "text": "种菜",
+          "pinyin": "zhòng cài"
+        },
+        {
+          "text": "种",
+          "pinyin": "zhòng",
+          "context": "u03:s22",
+          "label": "种树的“种”"
+        }
+      ]
+    },
+    {
+      "title": "教",
+      "note": "“教会”在这里指教别人学会。",
+      "items": [
+        {
+          "text": "教",
+          "pinyin": "jiào"
+        },
+        {
+          "text": "教室",
+          "pinyin": "jiào shì"
+        },
+        {
+          "text": "教会",
+          "pinyin": "jiāo huì"
+        }
+      ]
+    },
+    {
+      "title": "发",
+      "note": "单字读本调，词语里可能带轻声。",
+      "items": [
+        {
+          "text": "发",
+          "pinyin": "fà"
+        },
+        {
+          "text": "头发",
+          "pinyin": "tóu fa"
+        },
+        {
+          "text": "发丝",
+          "pinyin": "fà sī"
+        },
+        {
+          "text": "发芽",
+          "pinyin": "fā yá"
+        }
+      ]
+    },
+    {
+      "title": "重",
+      "note": "重量与重新，用不同的读音。",
+      "items": [
+        {
+          "text": "重",
+          "pinyin": "zhòng"
+        },
+        {
+          "text": "重量",
+          "pinyin": "zhòng liàng"
+        },
+        {
+          "text": "重新",
+          "pinyin": "chóng xīn"
+        }
+      ]
+    },
+    {
+      "title": "地、得",
+      "note": "地面与轻轻地，得到与看得见。",
+      "items": [
+        {
+          "text": "地",
+          "pinyin": "dì"
+        },
+        {
+          "text": "地面",
+          "pinyin": "dì miàn"
+        },
+        {
+          "text": "轻轻地",
+          "pinyin": "qīng qīng de"
+        },
+        {
+          "text": "得",
+          "pinyin": "dé"
+        },
+        {
+          "text": "得到",
+          "pinyin": "dé dào"
+        },
+        {
+          "text": "看得见",
+          "pinyin": "kàn de jiàn"
+        }
+      ]
+    }
+  ]
+}

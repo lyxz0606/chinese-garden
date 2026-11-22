@@ -1,0 +1,6 @@
+声音：Microsoft Xiaoxiao（zh-CN-XiaoxiaoNeural）。
+来源：https://www.microsoft.com/en-us/edge/features/read-aloud
+生成工具：https://github.com/rany2/edge-tts
+这些固定录音最初用于家长授权的家庭本地试用，本项目用于家庭非商业学习。生成时发送课程文字，学习记录及家庭信息未发送。
+工具许可仅说明工具本身，不作为微软声音的公开再分发许可。
+单字“女”另用家长于2026年11月10日确认的 Microsoft Xiaoyi（zh-CN-XiaoyiNeural）完整录音；其他字词的声音不随此项更换。
