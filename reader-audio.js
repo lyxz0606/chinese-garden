@@ -1,3 +1,4 @@
+import {warmAudio,playPrepared,stopAudio} from './audio-player.js';
 let files=new Map(),contextFiles=new Map(),loaded=false;
 export const readerReady=fetch(new URL('./reader-audio/index.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('声音清单未载入');return r.json();}).then(data=>{
   if(!data.complete)throw Error('声音清单不完整');
@@ -18,17 +19,25 @@ export const readerReady=fetch(new URL('./reader-audio/index.json',import.meta.u
   files=defaults;contextFiles=contexts;loaded=true;return data;
 }).catch(()=>null);
 export class ReaderAudio {
-  constructor(notify,status,onFailure){this.notify=notify;this.status=status;this.onFailure=onFailure;this.token=0;this.recording=null;}
+  constructor(notify,status,onFailure){this.notify=notify;this.status=status;this.onFailure=onFailure;this.token=0;this.recording=new Audio();}
   voices(){return [];}
-  stop(){this.token++;if(this.recording){this.recording.pause();this.recording.removeAttribute('src');this.recording.load();this.recording=null;}this.status?.(false);}
+  stop(){this.token++;stopAudio(this.recording);this.status?.(false);}
   playFile(file,settings={}){
-    this.stop();const token=this.token,player=new Audio(file);this.recording=player;player.preload='auto';player.playbackRate=Math.max(.75,Math.min(1.25,(settings.rate||.8)/.8));
-    if('preservesPitch' in player)player.preservesPitch=true;
-    player.onplaying=()=>{if(token===this.token)this.status?.(true);};
-    player.onended=()=>{if(token===this.token){this.status?.(false);this.recording=null;}};
+    this.stop();const token=this.token,player=this.recording;
+    player.onended=()=>{if(token===this.token)this.status?.(false);};
     let failedOnce=false;
     const failed=()=>{if(token===this.token&&!failedOnce){failedOnce=true;this.status?.(false);this.onFailure?.();this.notify('这段声音没有加载成功。联网后可在家长页补下载对应单元；现在可以先由家长示范。');}};
-    player.onerror=failed;player.play().catch(failed);return true;
+    player.onerror=failed;
+    playPrepared(player,file,Math.max(.75,Math.min(1.25,(settings.rate||.8)/.8)))
+      .then(()=>{if(token===this.token&&!failedOnce)this.status?.(true);}).catch(failed);
+    return true;
+  }
+  prepare(items=[]){
+    const selected=[...items];
+    readerReady.then(()=>warmAudio(selected.map(item=>{
+      const value=String(item.text??item).trim();
+      return (contextFiles.get(JSON.stringify([item.context||'',value]))||files.get(value))?.url;
+    }),this.recording));
   }
   speak(text,settings={}){
     const value=String(text).trim();

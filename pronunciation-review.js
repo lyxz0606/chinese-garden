@@ -29,5 +29,11 @@ try{
     }
     groups.append(article);
   }
+  const prepareVisible=()=>audio.prepare([...groups.querySelectorAll('[data-text]')]
+    .filter(b=>{const r=b.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight;})
+    .map(b=>({text:b.dataset.text,context:b.dataset.context})));
+  prepareVisible();
+  let scheduled=false;
+  window.addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(()=>{scheduled=false;prepareVisible();});}},{passive:true});
   document.getElementById('loading').hidden=true;
 }catch{document.getElementById('loading').textContent='读音内容未能载入，请返回小花园或刷新重试。';}

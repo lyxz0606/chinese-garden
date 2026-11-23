@@ -1,3 +1,4 @@
+import {warmAudio,playPrepared,stopAudio} from './audio-player.js';
 const $=id=>document.getElementById(id),audio=$('sample-audio');
 let clips={},played=new Set(),active=null,ticket=0;
 function workerStatus(worker){return new Promise((resolve,reject)=>{const channel=new MessageChannel(),timer=setTimeout(()=>{channel.port1.close();reject(Error('检查响应较慢，请稍后重试。'));},120000);channel.port1.onmessage=e=>{clearTimeout(timer);channel.port1.close();e.data?.error?reject(Error(e.data.error)):resolve(e.data);};worker.postMessage({action:'status',deep:true},[channel.port2]);});}
@@ -21,13 +22,13 @@ async function check(){
   }catch(err){$('device-status').textContent='检查暂未完成：'+err.message;}
   $('device-checks').replaceChildren(...lines.map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));$('recheck').disabled=false;
 }
-function stop(){ticket++;active=null;audio.pause();audio.removeAttribute('src');audio.load();}
+function stop(){ticket++;active=null;stopAudio(audio);}
 $('recheck').onclick=check;$('stop-sample').onclick=()=>{stop();$('sound-message').textContent='声音已停止。';};
 $('sound-checks').onclick=async e=>{
   const id=e.target.closest('[data-sound]')?.dataset.sound,clip=clips[id];if(!clip)return;
-  stop();const serial=ticket;active=id;audio.src=clip.file;audio.playbackRate=1;
-  $('sound-message').textContent='正在播放：'+clip.label;
-  try{await audio.play();}catch(err){if(serial===ticket&&err.name!=='AbortError')$('sound-message').textContent='声音未能播放，请检查设备音量，并先补齐离线内容。';}
+  stop();const serial=ticket;active=id;
+  $('sound-message').textContent='正在准备声音：'+clip.label;
+  try{await playPrepared(audio,clip.file);if(serial===ticket)$('sound-message').textContent='正在播放：'+clip.label;}catch(err){if(serial===ticket&&err.name!=='AbortError')$('sound-message').textContent='声音未能播放，请检查设备音量，并先补齐离线内容。';}
 };
 audio.addEventListener('ended',()=>{if(!active)return;played.add(active);$('sound-message').textContent=clips[active].label+'已播放结束。如果没有听见，请检查设备音量和耳机。';$('sound-results').textContent='已完整播放：'+[...played].map(id=>clips[id].label).join('、')+'。这些结果只表示播放完成，不代替人工听音。';active=null;});
 audio.addEventListener('error',()=>{if(active)$('sound-message').textContent='声音文件暂时不可用，请返回家长页补齐离线内容。';});
@@ -37,6 +38,7 @@ async function load(){try{
   const [reader,pinyin]=await Promise.all([get('reader-audio/index.json'),get('pinyin/course-data.json')]);
   const first=reader.items.find(i=>i.text==='花')||reader.items.find(i=>i.text.length===1);
   clips={reader:{label:'识字“'+first.text+'”',file:'reader-audio/'+first.file},ong:{label:'拼音 ong',file:'pinyin/'+pinyin.foundations.find(i=>i.id==='final-ong').audio.file},bin:{label:'完整音节 bīn',file:'pinyin/'+pinyin.syllables.find(i=>i.id==='sy-bin1').audio.file}};
+  warmAudio(Object.values(clips).map(clip=>clip.file),audio);
   for(const button of document.querySelectorAll('[data-sound]')){button.disabled=false;button.textContent=clips[button.dataset.sound].label;}
   $('sound-message').textContent='点一个按钮，听听声音是否正常。';
 }catch(err){$('sound-message').textContent=err.message+'，请先联网打开或保存完整内容。';}}

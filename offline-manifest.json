@@ -1,5 +1,5 @@
 {
-  "version": "0.6.1-20261122103233619",
+  "version": "0.6.2-20261123033235270",
   "literacyAudioComplete": true,
   "pinyinAudioComplete": true,
   "units": [
@@ -351,6 +351,11 @@
       "group": "course"
     },
     {
+      "url": "./audio-player.js",
+      "bytes": 2529,
+      "group": "course"
+    },
+    {
       "url": "./content.js",
       "bytes": 7741,
       "group": "course"
@@ -362,7 +367,7 @@
     },
     {
       "url": "./device.js",
-      "bytes": 4695,
+      "bytes": 4847,
       "group": "course"
     },
     {
@@ -427,7 +432,7 @@
     },
     {
       "url": "./literacy-app.js",
-      "bytes": 38283,
+      "bytes": 38700,
       "group": "course"
     },
     {
@@ -27245,7 +27250,7 @@
     },
     {
       "url": "./pinyin/course-app.js",
-      "bytes": 53285,
+      "bytes": 54030,
       "group": "course"
     },
     {
@@ -27400,7 +27405,7 @@
     },
     {
       "url": "./pinyin/practice.js",
-      "bytes": 7607,
+      "bytes": 7633,
       "group": "course"
     },
     {
@@ -27420,12 +27425,12 @@
     },
     {
       "url": "./pronunciation-review.js",
-      "bytes": 2201,
+      "bytes": 2637,
       "group": "course"
     },
     {
       "url": "./reader-audio.js",
-      "bytes": 2604,
+      "bytes": 2744,
       "group": "course"
     },
     {

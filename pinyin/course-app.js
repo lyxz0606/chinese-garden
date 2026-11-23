@@ -1,3 +1,4 @@
+import {warmAudio,playPrepared,stopAudio} from '../audio-player.js';
 import {familyStorage as localStorage,FAMILY_KEY} from '../family-store.js';
 import {downloadFamily,downloadRaw,importFamily} from '../family-records.js';
 import {groupProgress,buildLearningPlan,hasIndependentOral} from './course-learning.js';
@@ -14,15 +15,14 @@ const currentGame=()=>current()?.game||round?.game;
 const currentSettings=()=>({...round.settings,mode:current()?.mode||round.settings.mode});
 const phaseNames={review:'先复习',learn:'学一点',use:'用起来',practice:'再试一试'};
 function status(text,error=false){$('system-status').textContent=text;$('system-status').classList.toggle('error',error);}
-function stop(){playerTicket++;audio.pause();audio.removeAttribute('src');audio.load();$('audio-status').textContent='声音已停止';$('audio-bar').hidden=true;}
+function stop(){playerTicket++;stopAudio(audio);$('audio-status').textContent='声音已停止';$('audio-bar').hidden=true;}
 async function play(record,label,asPrompt=false,rate=1){
   if(!record){$('audio-status').textContent='这条录音还在准备，请家长示范。';return;}
   stop();const ticket=playerTicket,q=current();
-  audio.src=record.file;audio.playbackRate=record.allowSlowPlayback===false?1:rate;
-  audio.preservesPitch=true;audio.webkitPreservesPitch=true;
+  
   $('audio-bar').hidden=false;$('audio-status').textContent=asPrompt?'正在准备任务声音…':'正在准备声音：'+label;
   try{
-    await audio.play();if(ticket!==playerTicket)return;
+    await playPrepared(audio,record.file,record.allowSlowPlayback===false?1:rate);if(ticket!==playerTicket)return;
     if(q&&q===current()&&!q.recorded){
       if(asPrompt){q.stimulus=true;if(['mail','tone','train'].includes(currentGame())&&!q.answered)q.message='听好后再选，可以重复听。';}
       else q.helped=true;
@@ -63,6 +63,21 @@ function readingButton(target,field,number,text){
   return '<p class="subtle">'+(field==='sentence'?'这一句请家长读。':field==='question'?'这个问题请家长读。':'这部分请家长读。')+'</p>';
 }
 function readingSentences(target,withPinyin=true){return '<div class="sentence-audio-list">'+target.sentences.map((sentence,n)=>'<div class="reading-line"><p>'+(withPinyin?sentence.chunks.map(c=>'<ruby>'+esc(c.text)+'<rt>'+esc(c.pinyin)+'</rt></ruby>').join('')+'。':esc(sentence.text))+'</p>'+readingButton(target,'sentence',n,'听第 '+(n+1)+' 句')+'</div>').join('')+'</div>';}
+// Rendered buttons are the authoritative set of sounds for this screen.
+// Preparing bytes never plays the answer or changes a question's help/stimulus flags.
+function prepareVisibleSounds(){
+  if(!index)return;
+  const files=[];
+  for(const button of main.querySelectorAll('[data-action$="-audio"]')){
+    const [id,field,number]=button.dataset.value.split('|'),target=index.get(id);
+    if(!target)continue;
+    const record=button.dataset.action==='context-audio'?target.contextAudio:
+      button.dataset.action==='reading-audio'?(field==='sentence'?target.sentences?.[Number(number)]?.audio:target[field+'Audio']):target.audio;
+    if(record?.file)files.push(record.file);
+  }
+  warmAudio(files,audio);
+}
+new MutationObserver(prepareVisibleSounds).observe(main,{childList:true,subtree:true});
 function nav(next){stop();view=next;document.querySelectorAll('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===(next==='task'?'home':next)));render();focusMain();}
 function render(){if(view==='home')home();if(view==='task')drawTask();if(view==='records')drawRecords();if(view==='games')gamesPage();if(view==='storytime')storyTime();if(view==='library')library();if(view==='lesson')lesson();}
 function options(values,value){return values.map(([key,text])=>'<option value="'+key+'" '+(value===key?'selected':'')+'>'+esc(text)+'</option>').join('');}
